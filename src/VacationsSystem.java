@@ -60,9 +60,32 @@ public class VacationsSystem {
                 email = input.nextLine();
             }
 
+        }
+
+        System.out.println("Моля въведете ЕГН:");
+        String id = input.nextLine();
+        if (id == null || id.isEmpty()) {
+            System.out.println("Моля въведете ЕГН:");
+            id = input.nextLine();
+
+        } else {
+            while (!id.matches("[0-9]{10}") || id.length() != 10) {
+                System.out.println("Моля въведете валиден ЕГН:");
+                id = input.nextLine();
+
+            }
 
         }
 
+    }
+
+    public static boolean isStringInt(String id) {
+        try {
+            Integer.parseInt(id);
+            return true;
+        } catch (NumberFormatException exception) {
+            return false;
+        }
     }
 
 
