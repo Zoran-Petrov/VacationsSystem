@@ -69,7 +69,7 @@ public class VacationsSystem {
             id = input.nextLine();
 
         } else {
-            while (!id.matches("[0-9]{10}") || id.length() != 10) {
+            while (!id.matches("[0-9]{10}")) {
                 System.out.println("Моля въведете валиден ЕГН:");
                 id = input.nextLine();
 
