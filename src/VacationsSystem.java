@@ -79,15 +79,5 @@ public class VacationsSystem {
 
     }
 
-    public static boolean isStringInt(String id) {
-        try {
-            Integer.parseInt(id);
-            return true;
-        } catch (NumberFormatException exception) {
-            return false;
-        }
-    }
-
-
 }
 
