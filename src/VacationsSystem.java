@@ -1,6 +1,11 @@
+import java.util.Scanner;
+
 public class VacationsSystem {
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
         printUserOptions();
+        System.out.println("Въведи избор:");
+        int userChoice = input.nextInt();
     }
     public static void printUserOptions() {
         System.out.println("-------------------------------------------");
