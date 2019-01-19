@@ -91,6 +91,21 @@ public class VacationsSystem {
             }
         }
 
+        System.out.println("Моля въведете тип отпуска: платена/неплатена");
+        String payed = "платена";
+        String notPayed = "неплатена";
+        String vacationType = input.nextLine();
+        if (vacationType == null || vacationType.isEmpty()) {
+            System.out.println("Моля въведете тип на отпуската!!");
+            vacationType = input.nextLine();
+        } else {
+            while (!vacationType.equals(payed) && !vacationType.equals(notPayed)) {
+                System.out.println("Моля въведете думата \"платена\" или думата \"неплатена\"!");
+                vacationType = input.nextLine();
+
+            }
+        }
+
     }
 
 }
