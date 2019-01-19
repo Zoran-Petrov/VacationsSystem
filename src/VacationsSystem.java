@@ -10,9 +10,9 @@ public class VacationsSystem {
             case 1:
                 getUserDetails();
                 break;
-
         }
     }
+
     public static void printUserOptions() {
         System.out.println("-------------------------------------------");
         System.out.println("  1. Заяви отпуска.");
@@ -25,10 +25,34 @@ public class VacationsSystem {
 
     public static void getUserDetails() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Моля въведете собствено име");
+        System.out.println("Моля въведете собствено име:");
         String firstName = input.nextLine();
-        System.out.println(firstName);
+        if (firstName == null) {
+            System.out.println("Моля въведете име!");
+            firstName = input.nextLine();
+        } else {
+            while (firstName.isEmpty() || firstName.length() < 2) {
+                System.out.println("Моля въведете коректно собствено име!");
+                firstName = input.nextLine();
+            }
+        }
 
+        System.out.println("Моля въведете фамилно име:");
+        String lastName = input.nextLine();
+        if (lastName == null) {
+            System.out.println("Моля въведете име!");
+            lastName = input.nextLine();
+        } else {
+            while (lastName.isEmpty() || lastName.length() < 2) {
+                System.out.println("Моля въведете коректно фамилно име!");
+                lastName = input.nextLine();
+            }
+        }
+
+        
 
     }
+
+
 }
+
