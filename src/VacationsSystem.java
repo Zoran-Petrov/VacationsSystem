@@ -53,8 +53,8 @@ public class VacationsSystem {
                 writer.print(vacation[i] + "\t");
             }
             writer.println(vacation[5]);
-            System.out.println("-----------------------------------------------------");
             System.out.println("Заявката ви беше успешно записана.");
+            writer.close();
             printUserOptions();
         } catch (IOException e) {
             System.out.println(e);
