@@ -25,11 +25,11 @@ public class VacationsSystem {
 
     public static void getUserDetails() {
         returnFirstName();
-        getLastName();
-        getEmail();
-        getUserId();
-        getVacationPeriod();
-        getVacationType();
+        returnLastName();
+        returnEmail();
+        returnUserId();
+        returnVacationPeriod();
+        returnVacationType();
     }
 
     public static String returnFirstName() {
