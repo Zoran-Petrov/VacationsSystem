@@ -59,7 +59,6 @@ public class VacationsSystem {
                 System.out.println("Моля въведете валиден имейл!");
                 email = input.nextLine();
             }
-
         }
 
         System.out.println("Моля въведете ЕГН:");
@@ -67,14 +66,11 @@ public class VacationsSystem {
         if (id == null || id.isEmpty()) {
             System.out.println("Моля въведете ЕГН!");
             id = input.nextLine();
-
         } else {
             while (!id.matches("[0-9]{10}")) {
                 System.out.println("Моля въведете валиден ЕГН!");
                 id = input.nextLine();
-
             }
-
         }
 
         System.out.println("Моля въведете начална и крайна дата в формат DD/MM/2019-DD/MM/2019:");
@@ -106,6 +102,20 @@ public class VacationsSystem {
             }
         }
 
+    }
+    public static void getFirstName() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Моля въведете собствено име:");
+        String firstName = input.nextLine();
+        if (firstName == null) {
+            System.out.println("Моля въведете име!");
+            firstName = input.nextLine();
+        } else {
+            while (firstName.isEmpty() || firstName.length() < 2) {
+                System.out.println("Моля въведете коректно собствено име!");
+                firstName = input.nextLine();
+            }
+        }
     }
 
 }
