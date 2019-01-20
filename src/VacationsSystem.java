@@ -23,7 +23,7 @@ public class VacationsSystem {
         System.out.println("-------------------------------------------");
     }
 
-    public static void getUserDetails() {
+    public static String[] returnUserDetails() {
         String[] vacationDetails = new String[6];
         vacationDetails[0] = returnFirstName();
         vacationDetails[1] = returnLastName();
@@ -31,6 +31,11 @@ public class VacationsSystem {
         vacationDetails[3] = returnUserId();
         vacationDetails[4] = returnVacationPeriod();
         vacationDetails[5] = returnVacationType();
+        return vacationDetails;
+    }
+
+    public static void writeVacationToFile() {
+        String[] vacation = returnUserDetails();
     }
 
     public static String returnFirstName() {
