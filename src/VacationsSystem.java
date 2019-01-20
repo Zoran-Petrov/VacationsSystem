@@ -6,8 +6,12 @@ import java.util.Scanner;
 
 public class VacationsSystem {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
         printUserOptions();
+    }
+
+    public static void printUserOptions() {
+        Scanner input = new Scanner(System.in);
+        printApplicationOptions();
         System.out.println("Въведи избор:");
         int userChoice = input.nextInt();
         switch (userChoice) {
@@ -17,7 +21,7 @@ public class VacationsSystem {
         }
     }
 
-    public static void printUserOptions() {
+    public static void printApplicationOptions() {
         System.out.println("-------------------------------------------");
         System.out.println("  1. Заяви отпуска.");
         System.out.println("  2. Виж всички отпуски.");
@@ -51,8 +55,7 @@ public class VacationsSystem {
             writer.println(vacation[5]);
             System.out.println("-----------------------------------------------------");
             System.out.println("Заявката ви беше успешно записана.");
-            System.out.println("-----------------------------------------------------");
-
+            printUserOptions();
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -129,7 +132,6 @@ public class VacationsSystem {
         if (vacationPeriod == null || vacationPeriod.isEmpty()) {
             System.out.println("Моля въведете начална и крайна дата!");
             vacationPeriod = input.nextLine();
-
         } else {
             String dateRegex = "[0-9]{2}/[0-9]{2}/(2019)-[0-9]{2}/[0-9]{2}/(2019)";
             while (!vacationPeriod.matches(dateRegex)) {
@@ -153,11 +155,9 @@ public class VacationsSystem {
             while (!vacationType.equals(payed) && !vacationType.equals(notPayed)) {
                 System.out.println("Моля въведете думата \"платена\" или думата \"неплатена\"!");
                 vacationType = input.nextLine();
-
             }
         }
         return vacationType;
     }
-
 }
 
