@@ -118,5 +118,20 @@ public class VacationsSystem {
         }
     }
 
+    public static void getLastName() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Моля въведете фамилно име:");
+        String lastName = input.nextLine();
+        if (lastName == null) {
+            System.out.println("Моля въведете име!");
+            lastName = input.nextLine();
+        } else {
+            while (lastName.isEmpty() || lastName.length() < 2) {
+                System.out.println("Моля въведете коректно фамилно име!");
+                lastName = input.nextLine();
+            }
+        }
+    }
+
 }
 
