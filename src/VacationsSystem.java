@@ -24,12 +24,13 @@ public class VacationsSystem {
     }
 
     public static void getUserDetails() {
-        returnFirstName();
-        returnLastName();
-        returnEmail();
-        returnUserId();
-        returnVacationPeriod();
-        returnVacationType();
+        String[] vacationDetails = new String[6];
+        vacationDetails[0] = returnFirstName();
+        vacationDetails[1] = returnLastName();
+        vacationDetails[2] = returnEmail();
+        vacationDetails[3] = returnUserId();
+        vacationDetails[4] = returnVacationPeriod();
+        vacationDetails[5] = returnVacationType();
     }
 
     public static String returnFirstName() {
