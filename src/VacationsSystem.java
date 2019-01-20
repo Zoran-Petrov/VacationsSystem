@@ -48,7 +48,7 @@ public class VacationsSystem {
         return firstName;
     }
 
-    public static void getLastName() {
+    public static String returnLastName() {
         Scanner input = new Scanner(System.in);
         System.out.println("Моля въведете фамилно име:");
         String lastName = input.nextLine();
@@ -61,9 +61,10 @@ public class VacationsSystem {
                 lastName = input.nextLine();
             }
         }
+        return lastName;
     }
 
-    public static void getEmail() {
+    public static String returnEmail() {
         Scanner input = new Scanner(System.in);
         System.out.println("Моля въведете имейл:");
         String email = input.nextLine();
@@ -76,9 +77,10 @@ public class VacationsSystem {
                 email = input.nextLine();
             }
         }
+        return email;
     }
 
-    public static void getUserId() {
+    public static String returnUserId() {
         Scanner input = new Scanner(System.in);
         System.out.println("Моля въведете ЕГН:");
         String id = input.nextLine();
@@ -91,9 +93,10 @@ public class VacationsSystem {
                 id = input.nextLine();
             }
         }
+        return id;
     }
 
-    public static void getVacationPeriod() {
+    public static String returnVacationPeriod() {
         Scanner input = new Scanner(System.in);
         System.out.println("Моля въведете начална и крайна дата в формат DD/MM/2019-DD/MM/2019:");
         String vacationPeriod = input.nextLine();
@@ -108,9 +111,10 @@ public class VacationsSystem {
                 vacationPeriod = input.nextLine();
             }
         }
+        return vacationPeriod;
     }
 
-    public static void getVacationType() {
+    public static String returnVacationType() {
         Scanner input = new Scanner(System.in);
         System.out.println("Моля въведете тип отпуска: платена/неплатена");
         String payed = "платена";
@@ -126,7 +130,7 @@ public class VacationsSystem {
 
             }
         }
-
+        return vacationType;
     }
 
 }
