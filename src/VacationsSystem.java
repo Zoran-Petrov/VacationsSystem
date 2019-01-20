@@ -133,5 +133,20 @@ public class VacationsSystem {
         }
     }
 
+    public static void getEmail() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Моля въведете имейл:");
+        String email = input.nextLine();
+        if (email == null) {
+            System.out.println("Моля въведете имейл!");
+            email = input.nextLine();
+        } else {
+            while (!email.matches("^[A-Za-z0-9_\\-.]+@[A-Za-z0-9\\-]+\\.[A-Za-z0-9\\-.]{2,}$")) {
+                System.out.println("Моля въведете валиден имейл!");
+                email = input.nextLine();
+            }
+        }
+    }
+
 }
 
