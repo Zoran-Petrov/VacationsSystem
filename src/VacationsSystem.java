@@ -24,15 +24,15 @@ public class VacationsSystem {
     }
 
     public static void getUserDetails() {
-        getFirstName();
+        returnFirstName();
         getLastName();
         getEmail();
         getUserId();
         getVacationPeriod();
         getVacationType();
     }
-    
-    public static void getFirstName() {
+
+    public static String returnFirstName() {
         Scanner input = new Scanner(System.in);
         System.out.println("Моля въведете собствено име:");
         String firstName = input.nextLine();
@@ -45,6 +45,7 @@ public class VacationsSystem {
                 firstName = input.nextLine();
             }
         }
+        return firstName;
     }
 
     public static void getLastName() {
