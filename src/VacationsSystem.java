@@ -1,3 +1,7 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class VacationsSystem {
@@ -8,7 +12,7 @@ public class VacationsSystem {
         int userChoice = input.nextInt();
         switch (userChoice) {
             case 1:
-                getUserDetails();
+                writeVacationToFile();
                 break;
         }
     }
@@ -36,6 +40,22 @@ public class VacationsSystem {
 
     public static void writeVacationToFile() {
         String[] vacation = returnUserDetails();
+        try (
+            PrintWriter writer = new PrintWriter(
+                    new BufferedWriter(
+                            new FileWriter("vacations.txt", true))))
+        {
+            for (int i = 0; i < vacation.length - 1; i++) {
+                writer.print(vacation[i] + "\t");
+            }
+            writer.println(vacation[5]);
+            System.out.println("-----------------------------------------------------");
+            System.out.println("Заявката ви беше успешно записана.");
+            System.out.println("-----------------------------------------------------");
+
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
 
     public static String returnFirstName() {
