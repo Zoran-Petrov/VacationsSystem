@@ -2,6 +2,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class VacationsSystem {
@@ -22,7 +23,6 @@ public class VacationsSystem {
                 showAllVacations();
                 break;
         }
-
     }
 
     public static void printApplicationOptions() {
@@ -67,26 +67,26 @@ public class VacationsSystem {
     public static void showAllVacations() {
         Path patToFile = Paths.get("vacations.txt");
         if (Files.notExists(patToFile)) {
-            System.out.println("Все още няма направени заявки за отпуска.");
+            System.out.println("Все още няма заявени отпуски.");
             printUserOptions();
         } else {
             File vacations = new File("vacations.txt");
-            String msg = "";
+            String[] vacationsArray = new String[6];
             try {
                 Scanner scanner = new Scanner(vacations);
+                int counter = 0;
                 while (scanner.hasNextLine()) {
                     String line = scanner.nextLine();
-                    msg += line + "\n";
+                    vacationsArray[counter] = line + "\n";
+                    counter++;
                 }
-                System.out.println(msg);
+                System.out.println(Arrays.toString(vacationsArray));
+                printUserOptions();
+            } catch (IOException e) {
+                System.out.println("Все още няма заявени отпуски.");
             }
-            catch (IOException e) {
-                System.out.println(e);
-            }
-
         }
     }
-
 
     public static String returnFirstName() {
         Scanner input = new Scanner(System.in);
