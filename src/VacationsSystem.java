@@ -1,7 +1,7 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class VacationsSystem {
@@ -18,7 +18,11 @@ public class VacationsSystem {
             case 1:
                 writeVacationToFile();
                 break;
+            case 2:
+                showAllVacations();
+                break;
         }
+
     }
 
     public static void printApplicationOptions() {
@@ -45,10 +49,9 @@ public class VacationsSystem {
     public static void writeVacationToFile() {
         String[] vacation = returnUserDetails();
         try (
-            PrintWriter writer = new PrintWriter(
-                    new BufferedWriter(
-                            new FileWriter("vacations.txt", true))))
-        {
+                PrintWriter writer = new PrintWriter(
+                        new BufferedWriter(
+                                new FileWriter("vacations.txt", true)))) {
             for (int i = 0; i < vacation.length - 1; i++) {
                 writer.print(vacation[i] + "\t");
             }
@@ -60,6 +63,30 @@ public class VacationsSystem {
             System.out.println(e);
         }
     }
+
+    public static void showAllVacations() {
+        Path patToFile = Paths.get("vacations.txt");
+        if (Files.notExists(patToFile)) {
+            System.out.println("Все още няма направени заявки за отпуска.");
+            printUserOptions();
+        } else {
+            File vacations = new File("vacations.txt");
+            String msg = "";
+            try {
+                Scanner scanner = new Scanner(vacations);
+                while (scanner.hasNextLine()) {
+                    String line = scanner.nextLine();
+                    msg += line + "\n";
+                }
+                System.out.println(msg);
+            }
+            catch (IOException e) {
+                System.out.println(e);
+            }
+
+        }
+    }
+
 
     public static String returnFirstName() {
         Scanner input = new Scanner(System.in);
