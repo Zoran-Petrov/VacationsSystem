@@ -71,21 +71,25 @@ public class VacationsSystem {
             printUserOptions();
         } else {
             File vacations = new File("vacations.txt");
-            String[] vacationsArray = new String[6];
+            StringBuilder vacationsSB = new StringBuilder();
             try {
                 Scanner scanner = new Scanner(vacations);
                 int counter = 0;
                 while (scanner.hasNextLine()) {
                     String line = scanner.nextLine();
-                    vacationsArray[counter] = line + "\n";
+                    vacationsSB.append(line + "\n");
                     counter++;
                 }
-                System.out.println(Arrays.toString(vacationsArray));
+                System.out.println(vacationsSB.toString());
                 printUserOptions();
             } catch (IOException e) {
                 System.out.println("Все още няма заявени отпуски.");
             }
         }
+    }
+
+    public static void formatVacationsForDisplay(String[] vacationsArray) {
+
     }
 
     public static String returnFirstName() {
