@@ -93,10 +93,9 @@ public class VacationsSystem {
     public static void formatVacationsAndDisplay(String vacationsString) {
         String[] vacationsArray; // = new String[counter];
         vacationsArray = vacationsString.split("\n");
+        printVacationsTableHeader();
         for (int i = 0; i < vacationsArray.length; i++) {
-            //String[] row = new String[6];
             String[] row = vacationsArray[i].split("\t");
-            //System.out.print(i==0?row[0].substring(1):row[0]);
             System.out.print(row[0]);
             for (int j = 0; j < 15 - row[0].length(); j++) {
                 System.out.print(" ");
@@ -106,7 +105,7 @@ public class VacationsSystem {
                 System.out.print(" ");
             }
             System.out.print(row[2]);
-            for (int j = 0; j < 40 - row[2].length(); j++) {
+            for (int j = 0; j < 35 - row[2].length(); j++) {
                 System.out.print(" ");
             }
             System.out.print(row[3]);
@@ -119,6 +118,41 @@ public class VacationsSystem {
             }
             System.out.println(row[5]);
         }
+    }
+
+    public static void printVacationsTableHeader() {
+        String firstName = "Име";
+        String lastName = "Фамилия";
+        String email = "Имейл";
+        String id = "ЕГН";
+        String vacationPeriod = "Начална дата - крайна дата";
+        String vacationType = "Тип отпуска";
+        System.out.print(firstName);
+        for (int j = 0; j < 15 - firstName.length(); j++) {
+            System.out.print(" ");
+        }
+        System.out.print(lastName);
+        for (int j = 0; j < 20 - lastName.length(); j++) {
+            System.out.print(" ");
+        }
+        System.out.print(email);
+        for (int j = 0; j < 35 - email.length(); j++) {
+            System.out.print(" ");
+        }
+        System.out.print(id);
+        for (int j = 0; j < 20 - id.length(); j++) {
+            System.out.print(" ");
+        }
+        System.out.print(vacationPeriod);
+        for (int j = 0; j < 30 - vacationPeriod.length(); j++) {
+            System.out.print(" ");
+        }
+        System.out.println(vacationType);
+        for (int j = 0; j < 150; j++) {
+            System.out.print("-");
+        }
+        System.out.println();
+
     }
 
     public static String returnFirstName() {
