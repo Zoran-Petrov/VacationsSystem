@@ -30,7 +30,7 @@ public class VacationsSystem {
         System.out.println("  1. Заяви отпуска.");
         System.out.println("  2. Виж всички отпуски.");
         System.out.println("  3. Виж отпуска за служител.");
-        System.out.println("  4. Промени статус на отпуска");
+        System.out.println("  4. Промени статус на отпуска.");
         System.out.println("  5. Изход.");
         System.out.println("-------------------------------------------");
     }
@@ -64,32 +64,61 @@ public class VacationsSystem {
         }
     }
 
-    public static void showAllVacations() {
+    public static void showAllVacations()  {
         Path patToFile = Paths.get("vacations.txt");
-        if (Files.notExists(patToFile)) {
+        if (Files.notExists(patToFile) || patToFile.toFile().length() == 0) {
             System.out.println("Все още няма заявени отпуски.");
             printUserOptions();
         } else {
             File vacations = new File("vacations.txt");
             StringBuilder vacationsSB = new StringBuilder();
+            Scanner scanner = null;
             try {
-                Scanner scanner = new Scanner(vacations);
-                int counter = 0;
-                while (scanner.hasNextLine()) {
-                    String line = scanner.nextLine();
-                    vacationsSB.append(line + "\n");
-                    counter++;
-                }
-                System.out.println(vacationsSB.toString());
-                printUserOptions();
-            } catch (IOException e) {
-                System.out.println("Все още няма заявени отпуски.");
+                scanner = new Scanner(vacations);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
             }
+            //int counter = 0;
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                vacationsSB.append(line + "\n");
+                //counter++;
+            }
+            //System.out.println(vacationsSB.toString());
+            formatVacationsAndDisplay(vacationsSB.toString());
+            printUserOptions();
         }
     }
 
-    public static void formatVacationsForDisplay(String[] vacationsArray) {
-
+    public static void formatVacationsAndDisplay(String vacationsString) {
+        String[] vacationsArray; // = new String[counter];
+        vacationsArray = vacationsString.split("\n");
+        for (int i = 0; i < vacationsArray.length; i++) {
+            //String[] row = new String[6];
+            String[] row = vacationsArray[i].split("\t");
+            //System.out.print(i==0?row[0].substring(1):row[0]);
+            System.out.print(row[0]);
+            for (int j = 0; j < 15 - row[0].length(); j++) {
+                System.out.print(" ");
+            }
+            System.out.print(row[1]);
+            for (int j = 0; j < 20 - row[1].length(); j++) {
+                System.out.print(" ");
+            }
+            System.out.print(row[2]);
+            for (int j = 0; j < 40 - row[2].length(); j++) {
+                System.out.print(" ");
+            }
+            System.out.print(row[3]);
+            for (int j = 0; j < 20 - row[3].length(); j++) {
+                System.out.print(" ");
+            }
+            System.out.print(row[4]);
+            for (int j = 0; j < 30 - row[4].length(); j++) {
+                System.out.print(" ");
+            }
+            System.out.println(row[5]);
+        }
     }
 
     public static String returnFirstName() {
