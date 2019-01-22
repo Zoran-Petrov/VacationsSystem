@@ -15,6 +15,7 @@ public class VacationsSystem {
         printApplicationOptions();
         System.out.println("Въведи избор:");
         int userChoice = input.nextInt();
+
         switch (userChoice) {
             case 1:
                 writeVacationToFile();
@@ -22,6 +23,18 @@ public class VacationsSystem {
             case 2:
                 showAllVacations();
                 break;
+            case 3:
+                //showUserVacations();
+                break;
+            case 4:
+                changeVacationStatus();
+                break;
+            case 5:
+                exitProgram();
+                break;
+            default:
+                System.out.println("Въведи избор между 1 и 5!");
+                printUserOptions();
         }
     }
 
@@ -64,7 +77,7 @@ public class VacationsSystem {
         }
     }
 
-    public static void showAllVacations()  {
+    public static void showAllVacations() {
         Path patToFile = Paths.get("vacations.txt");
         if (Files.notExists(patToFile) || patToFile.toFile().length() == 0) {
             System.out.println("Все още няма заявени отпуски.");
@@ -113,7 +126,7 @@ public class VacationsSystem {
                 System.out.print(" ");
             }
             System.out.print(row[4]);
-            for (int j = 0; j < 30 - row[4].length(); j++) {
+            for (int j = 0; j < 35 - row[4].length(); j++) {
                 System.out.print(" ");
             }
             System.out.println(row[5]);
@@ -144,7 +157,7 @@ public class VacationsSystem {
             System.out.print(" ");
         }
         System.out.print(vacationPeriod);
-        for (int j = 0; j < 30 - vacationPeriod.length(); j++) {
+        for (int j = 0; j < 35 - vacationPeriod.length(); j++) {
             System.out.print(" ");
         }
         System.out.println(vacationType);
@@ -152,6 +165,12 @@ public class VacationsSystem {
             System.out.print("-");
         }
         System.out.println();
+
+    }
+
+    public static void changeVacationStatus() {
+        System.out.println("Тази опция все още не е реализирана. Моля изберете друга!");
+        printUserOptions();
 
     }
 
@@ -252,6 +271,11 @@ public class VacationsSystem {
             }
         }
         return vacationType;
+    }
+
+    public static void exitProgram() {
+        System.out.println("Излязохте от програмата.");
+        System.exit(0);
     }
 }
 
