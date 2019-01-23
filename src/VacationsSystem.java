@@ -2,7 +2,6 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class VacationsSystem {
@@ -113,27 +112,7 @@ public class VacationsSystem {
         printVacationsTableHeader();
         for (int i = 0; i < vacationsArray.length; i++) {
             String[] row = vacationsArray[i].split("\t");
-            System.out.print(row[0]);
-            for (int j = 0; j < 15 - row[0].length(); j++) {
-                System.out.print(" ");
-            }
-            System.out.print(row[1]);
-            for (int j = 0; j < 20 - row[1].length(); j++) {
-                System.out.print(" ");
-            }
-            System.out.print(row[2]);
-            for (int j = 0; j < 35 - row[2].length(); j++) {
-                System.out.print(" ");
-            }
-            System.out.print(row[3]);
-            for (int j = 0; j < 20 - row[3].length(); j++) {
-                System.out.print(" ");
-            }
-            System.out.print(row[4]);
-            for (int j = 0; j < 35 - row[4].length(); j++) {
-                System.out.print(" ");
-            }
-            System.out.println(row[5]);
+            printVacations(row);
         }
     }
 
@@ -193,27 +172,7 @@ public class VacationsSystem {
                     printVacationsTableHeader();
                 }
                 String[] row = vacationsArray[i].split("\t");
-                System.out.print(row[0]);
-                for (int j = 0; j < 15 - row[0].length(); j++) {
-                    System.out.print(" ");
-                }
-                System.out.print(row[1]);
-                for (int j = 0; j < 20 - row[1].length(); j++) {
-                    System.out.print(" ");
-                }
-                System.out.print(row[2]);
-                for (int j = 0; j < 35 - row[2].length(); j++) {
-                    System.out.print(" ");
-                }
-                System.out.print(row[3]);
-                for (int j = 0; j < 20 - row[3].length(); j++) {
-                    System.out.print(" ");
-                }
-                System.out.print(row[4]);
-                for (int j = 0; j < 35 - row[4].length(); j++) {
-                    System.out.print(" ");
-                }
-                System.out.println(row[5]);
+                printVacations(row);
                 occurrenceCounter++;
             }
             isTableHeaderPrinted = true;
@@ -223,6 +182,32 @@ public class VacationsSystem {
             System.out.println("Този служител все още няма заявени отпуски.");
             printUserOptions();
         }
+    }
+
+    public static void printVacations(String[] vacations) {
+        String[] row = vacations;
+        System.out.print(row[0]);
+        for (int j = 0; j < 15 - row[0].length(); j++) {
+            System.out.print(" ");
+        }
+        System.out.print(row[1]);
+        for (int j = 0; j < 20 - row[1].length(); j++) {
+            System.out.print(" ");
+        }
+        System.out.print(row[2]);
+        for (int j = 0; j < 35 - row[2].length(); j++) {
+            System.out.print(" ");
+        }
+        System.out.print(row[3]);
+        for (int j = 0; j < 20 - row[3].length(); j++) {
+            System.out.print(" ");
+        }
+        System.out.print(row[4]);
+        for (int j = 0; j < 35 - row[4].length(); j++) {
+            System.out.print(" ");
+        }
+        System.out.println(row[5]);
+
     }
 
     public static void changeVacationStatus() {
