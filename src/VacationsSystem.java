@@ -177,8 +177,10 @@ public class VacationsSystem {
             }
             isTableHeaderPrinted = true;
         }
-        printUserOptions();
-        if (occurrenceCounter == 0) {
+        if (occurrenceCounter != 0) {
+            printUserOptions();
+        } else {
+            System.out.println();
             System.out.println("Този служител все още няма заявени отпуски.");
             printUserOptions();
         }
