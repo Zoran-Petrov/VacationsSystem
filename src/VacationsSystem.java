@@ -78,10 +78,18 @@ public class VacationsSystem {
     }
 
     public static void showAllVacations() {
+        String fetchedVacations = fetchAllVacationsFromFile();
+        formatVacationsAndDisplay(fetchedVacations);
+        printUserOptions();
+    }
+
+    public static String fetchAllVacationsFromFile() {
         Path patToFile = Paths.get("vacations.txt");
         if (Files.notExists(patToFile) || patToFile.toFile().length() == 0) {
             System.out.println("Все още няма заявени отпуски.");
             printUserOptions();
+            return "";
+
         } else {
             File vacations = new File("vacations.txt");
             StringBuilder vacationsSB = new StringBuilder();
@@ -97,14 +105,14 @@ public class VacationsSystem {
                 vacationsSB.append(line + "\n");
                 //counter++;
             }
-            //System.out.println(vacationsSB.toString());
-            formatVacationsAndDisplay(vacationsSB.toString());
-            printUserOptions();
+            String allVacations = vacationsSB.toString();
+            return allVacations;
         }
+
     }
 
     public static void formatVacationsAndDisplay(String vacationsString) {
-        String[] vacationsArray; // = new String[counter];
+        String[] vacationsArray;
         vacationsArray = vacationsString.split("\n");
         printVacationsTableHeader();
         for (int i = 0; i < vacationsArray.length; i++) {
