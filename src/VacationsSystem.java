@@ -181,6 +181,7 @@ public class VacationsSystem {
         int indexFirstName;
         int indexLastName;
         int occurrenceCounter = 0;
+        boolean isTableHeaderPrinted = false;
         for (int i = 0; i < vacationsArray.length; i++) {
             indexFirstName = vacationsArray[i].toLowerCase().indexOf(userFirstAndLastNames[0].toLowerCase());
             indexLastName = vacationsArray[i].toLowerCase().indexOf(userFirstAndLastNames[1].toLowerCase());
@@ -188,6 +189,9 @@ public class VacationsSystem {
                 continue;
             }
             {
+                if (!isTableHeaderPrinted) {
+                    printVacationsTableHeader();
+                }
                 String[] row = vacationsArray[i].split("\t");
                 System.out.print(row[0]);
                 for (int j = 0; j < 15 - row[0].length(); j++) {
@@ -212,7 +216,9 @@ public class VacationsSystem {
                 System.out.println(row[5]);
                 occurrenceCounter++;
             }
+            isTableHeaderPrinted = true;
         }
+        printUserOptions();
         if (occurrenceCounter == 0) {
             System.out.println("Този служител все още няма заявени отпуски.");
             printUserOptions();
