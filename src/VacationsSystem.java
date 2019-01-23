@@ -2,7 +2,6 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class VacationsSystem {
@@ -89,7 +88,6 @@ public class VacationsSystem {
             System.out.println("Все още няма заявени отпуски.");
             printUserOptions();
             return "";
-
         } else {
             File vacations = new File("vacations.txt");
             StringBuilder vacationsSB = new StringBuilder();
@@ -99,16 +97,13 @@ public class VacationsSystem {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-            //int counter = 0;
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 vacationsSB.append(line + "\n");
-                //counter++;
             }
             String allVacations = vacationsSB.toString();
             return allVacations;
         }
-
     }
 
     public static void formatVacationsAndDisplay(String vacationsString) {
@@ -173,13 +168,11 @@ public class VacationsSystem {
             System.out.print("-");
         }
         System.out.println();
-
     }
 
     public static void changeVacationStatus() {
         System.out.println("Тази опция все още не е реализирана. Моля изберете друга!");
         printUserOptions();
-
     }
 
     public static String returnFirstName() {
