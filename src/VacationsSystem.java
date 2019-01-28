@@ -242,6 +242,7 @@ public class VacationsSystem {
             System.out.println("Моля въведете име!");
             lastName = input.nextLine();
         } else {
+            lastName = lastName.trim();
             while (lastName.isEmpty() || !lastName.matches("^[А-ЩЮ-Я][а-я]{0,10}[а-щю-я]$")) {
                 System.out.println("Моля въведете коректно фамилно име!");
                 lastName = input.nextLine();
@@ -258,6 +259,7 @@ public class VacationsSystem {
             System.out.println("Моля въведете имейл!");
             email = input.nextLine();
         } else {
+            email = email.trim();
             while (!email.matches("^[A-Za-z0-9_\\-.]+@[A-Za-z0-9\\-]+\\.[A-Za-z0-9\\-.]{2,}$")) {
                 System.out.println("Моля въведете валиден имейл!");
                 email = input.nextLine();
@@ -274,6 +276,7 @@ public class VacationsSystem {
             System.out.println("Моля въведете ЕГН!");
             id = input.nextLine();
         } else {
+            id = id.trim();
             while (!id.matches("[0-9]{10}")) {
                 System.out.println("Моля въведете валиден ЕГН!");
                 id = input.nextLine();
@@ -284,15 +287,16 @@ public class VacationsSystem {
 
     public static String returnVacationPeriod() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Моля въведете начална и крайна дата в формат DD/MM/2019-DD/MM/2019:");
+        System.out.println("Моля въведете начална и крайна дата в формат DD.MM.2019-DD.MM.2019:");
         String vacationPeriod = input.nextLine();
         if (vacationPeriod == null || vacationPeriod.isEmpty()) {
             System.out.println("Моля въведете начална и крайна дата!");
             vacationPeriod = input.nextLine();
         } else {
-            String dateRegex = "[0-9]{2}/[0-9]{2}/(2019)-[0-9]{2}/[0-9]{2}/(2019)";
+            vacationPeriod = vacationPeriod.trim();
+            String dateRegex = "[0-9]{2}[.][0-9]{2}[.](2019)-[0-9]{2}[.][0-9]{2}[.](2019)";
             while (!vacationPeriod.matches(dateRegex)) {
-                System.out.println("Моля въведете начална и крайна дата в указаният формат!");
+                System.out.println("Моля валиден период в указаният формат!");
                 vacationPeriod = input.nextLine();
             }
         }
@@ -309,6 +313,7 @@ public class VacationsSystem {
             System.out.println("Моля въведете тип на отпуската!!");
             vacationType = input.nextLine();
         } else {
+            vacationType = vacationType.trim();
             while (!vacationType.equals(payed) && !vacationType.equals(notPayed)) {
                 System.out.println("Моля въведете думата \"платена\" или думата \"неплатена\"!");
                 vacationType = input.nextLine();
@@ -316,6 +321,8 @@ public class VacationsSystem {
         }
         return vacationType;
     }
+
+
 
     public static void exitProgram() {
         System.out.println("Излязохте от програмата.");
