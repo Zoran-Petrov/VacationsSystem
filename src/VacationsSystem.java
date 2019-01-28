@@ -225,7 +225,8 @@ public class VacationsSystem {
             System.out.println("Моля въведете име!");
             firstName = input.nextLine();
         } else {
-            while (firstName.isEmpty() || firstName.length() < 2) {
+            firstName = firstName.trim();
+            while (firstName.isEmpty() || !firstName.matches("^[А-ЩЮ-Я][а-я]{0,10}[а-щю-я]$")) {
                 System.out.println("Моля въведете коректно собствено име!");
                 firstName = input.nextLine();
             }
