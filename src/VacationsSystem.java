@@ -242,7 +242,7 @@ public class VacationsSystem {
             System.out.println("Моля въведете име!");
             lastName = input.nextLine();
         } else {
-            while (lastName.isEmpty() || lastName.length() < 2) {
+            while (lastName.isEmpty() || !lastName.matches("^[А-ЩЮ-Я][а-я]{0,10}[а-щю-я]$")) {
                 System.out.println("Моля въведете коректно фамилно име!");
                 lastName = input.nextLine();
             }
