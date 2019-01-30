@@ -33,7 +33,7 @@ public class VacationsSystem {
                 showAllVacations();
                 break;
             case 3:
-                //showUserVacations();
+                showUserVacations();
                 break;
             case 4:
                 changeVacationStatus();
