@@ -13,9 +13,12 @@ public class VacationsSystem {
         Scanner input = new Scanner(System.in);
         printApplicationOptions();
         System.out.println("Въведи избор:");
-        int userChoice = input.nextInt();
-
-        switch (userChoice) {
+        String userChoice = input.nextLine();
+        while (!userChoice.matches("[1-5]")) {
+            System.out.println("Моля въведете число между 1 и 5:");
+            userChoice = input.nextLine();
+        }
+        switch (Integer.parseInt(userChoice)) {
             case 1:
                 writeVacationToFile();
                 break;
@@ -23,7 +26,7 @@ public class VacationsSystem {
                 showAllVacations();
                 break;
             case 3:
-                showUserVacations();
+                //showUserVacations();
                 break;
             case 4:
                 changeVacationStatus();
@@ -155,7 +158,6 @@ public class VacationsSystem {
         String[] userFirstAndLastNames = new String[2];
         userFirstAndLastNames[0] = returnFirstName();
         userFirstAndLastNames[1] = returnLastName();
-        //System.out.println(Arrays.toString(userFirstAndLastNames));
         String[] vacationsArray = allVacations.split("\n");
         int indexFirstName;
         int indexLastName;
@@ -287,19 +289,33 @@ public class VacationsSystem {
 
     public static String returnVacationPeriod() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Моля въведете начална и крайна дата в формат DD.MM.2019-DD.MM.2019:");
-        String vacationPeriod = input.nextLine();
-        if (vacationPeriod == null || vacationPeriod.isEmpty()) {
-            System.out.println("Моля въведете начална и крайна дата!");
-            vacationPeriod = input.nextLine();
+        System.out.println("Моля въведете начална дата в формат DD/MM/2019");
+        String startDate = input.nextLine();
+        if (startDate == null || startDate.isEmpty()) {
+            System.out.println("Моля въведете валидна начална дата в указаният формат!");
+            startDate = input.nextLine();
         } else {
-            vacationPeriod = vacationPeriod.trim();
-            String dateRegex = "[0-9]{2}[.][0-9]{2}[.](2019)-[0-9]{2}[.][0-9]{2}[.](2019)";
-            while (!vacationPeriod.matches(dateRegex)) {
-                System.out.println("Моля валиден период в указаният формат!");
-                vacationPeriod = input.nextLine();
+            String dateRegex = "[0-9]{2}/[0-9]{2}/(2019)";
+            while (!startDate.matches(dateRegex) || !validateDate(startDate)) {
+                System.out.println("Моля въведете валидна начална дата в указаният формат!");
+                startDate = input.nextLine();
             }
         }
+        System.out.println("Моля въведете крайна дата в формат DD/MM/2019");
+        String endDate = input.nextLine();
+        if (endDate == null || endDate.isEmpty()) {
+            System.out.println("Моля въведете валидна крайна дата в указаният формат!");
+            endDate = input.nextLine();
+        } else {
+            String dateRegex = "[0-9]{2}/[0-9]{2}/(2019)";
+            while (!endDate.matches(dateRegex) || !validateDate(endDate)) {
+                System.out.println("Моля въведете валидна крайна дата в указаният формат!");
+                endDate = input.nextLine();
+            }
+
+        }
+        String vacationPeriod = startDate.concat(" - ").concat(endDate);
+
         return vacationPeriod;
     }
 
@@ -322,7 +338,45 @@ public class VacationsSystem {
         return vacationType;
     }
 
-
+    public static boolean validateDate(String date) {
+        String stringDate = date;
+        String[] dateArray = stringDate.split("/");
+        int day = Integer.parseInt(dateArray[0]);
+        int month = Integer.parseInt(dateArray[1]);
+        boolean isDateValid;
+        if (day == 0 || month > 12) {
+            isDateValid = false;
+        } else if (month == 0) {
+            isDateValid = false;
+        } else if (month == 1 && day > 31) {
+            isDateValid = false;
+        } else if (month == 2 && day > 28) {
+            isDateValid = false;
+        } else if (month == 3 && day > 31) {
+            isDateValid = false;
+        } else if (month == 4 && day > 30) {
+            isDateValid = false;
+        } else if (month == 5 && day > 31) {
+            isDateValid = false;
+        } else if (month == 6 && day > 30) {
+            isDateValid = false;
+        } else if (month == 7 && day > 31) {
+            isDateValid = false;
+        } else if (month == 8 && day > 31) {
+            isDateValid = false;
+        } else if (month == 9 && day > 30) {
+            isDateValid = false;
+        } else if (month == 10 && day > 31) {
+            isDateValid = false;
+        } else if (month == 11 && day > 30) {
+            isDateValid = false;
+        } else if (month == 12 && day > 31) {
+            isDateValid = false;
+        } else {
+            isDateValid = true;
+        }
+        return isDateValid;
+    }
 
     public static void exitProgram() {
         System.out.println("Излязохте от програмата.");
