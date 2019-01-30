@@ -5,6 +5,13 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class VacationsSystem {
+    public static final int FIRST_NAME_WIDTH = 15;
+    public static final int LAST_NAME_WIDTH = 20;
+    public static final int EMAIL_WIDTH = 35;
+    public static final int ID_WIDTH = 20;
+    public static final int VACATION_PERIOD_WIDTH = 35;
+    public static final int VACATION_TYPE_WIDTH = 150;
+
     public static void main(String[] args) {
         printUserOptions();
     }
@@ -127,27 +134,27 @@ public class VacationsSystem {
         String vacationPeriod = "Начална дата - крайна дата";
         String vacationType = "Тип отпуска";
         System.out.print(firstName);
-        for (int j = 0; j < 15 - firstName.length(); j++) {
+        for (int j = 0; j < FIRST_NAME_WIDTH - firstName.length(); j++) {
             System.out.print(" ");
         }
         System.out.print(lastName);
-        for (int j = 0; j < 20 - lastName.length(); j++) {
+        for (int j = 0; j < LAST_NAME_WIDTH - lastName.length(); j++) {
             System.out.print(" ");
         }
         System.out.print(email);
-        for (int j = 0; j < 35 - email.length(); j++) {
+        for (int j = 0; j < EMAIL_WIDTH - email.length(); j++) {
             System.out.print(" ");
         }
         System.out.print(id);
-        for (int j = 0; j < 20 - id.length(); j++) {
+        for (int j = 0; j < ID_WIDTH - id.length(); j++) {
             System.out.print(" ");
         }
         System.out.print(vacationPeriod);
-        for (int j = 0; j < 35 - vacationPeriod.length(); j++) {
+        for (int j = 0; j < VACATION_PERIOD_WIDTH - vacationPeriod.length(); j++) {
             System.out.print(" ");
         }
         System.out.println(vacationType);
-        for (int j = 0; j < 150; j++) {
+        for (int j = 0; j < VACATION_TYPE_WIDTH; j++) {
             System.out.print("-");
         }
         System.out.println();
@@ -191,23 +198,23 @@ public class VacationsSystem {
     public static void printVacations(String[] vacations) {
         String[] row = vacations;
         System.out.print(row[0]);
-        for (int j = 0; j < 15 - row[0].length(); j++) {
+        for (int j = 0; j < FIRST_NAME_WIDTH - row[0].length(); j++) {
             System.out.print(" ");
         }
         System.out.print(row[1]);
-        for (int j = 0; j < 20 - row[1].length(); j++) {
+        for (int j = 0; j < LAST_NAME_WIDTH - row[1].length(); j++) {
             System.out.print(" ");
         }
         System.out.print(row[2]);
-        for (int j = 0; j < 35 - row[2].length(); j++) {
+        for (int j = 0; j < EMAIL_WIDTH - row[2].length(); j++) {
             System.out.print(" ");
         }
         System.out.print(row[3]);
-        for (int j = 0; j < 20 - row[3].length(); j++) {
+        for (int j = 0; j < ID_WIDTH - row[3].length(); j++) {
             System.out.print(" ");
         }
         System.out.print(row[4]);
-        for (int j = 0; j < 35 - row[4].length(); j++) {
+        for (int j = 0; j < VACATION_PERIOD_WIDTH - row[4].length(); j++) {
             System.out.print(" ");
         }
         System.out.println(row[5]);
