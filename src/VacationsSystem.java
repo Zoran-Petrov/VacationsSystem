@@ -12,6 +12,13 @@ public class VacationsSystem {
     public static final int VACATION_PERIOD_WIDTH = 35;
     public static final int VACATION_TYPE_WIDTH = 150;
 
+    public static final String HEADER_FIRST_NAME = "Име";
+    public static final String HEADER_LAST_NAME = "Фамилия";
+    public static final String HEADER_EMAIL = "Имейл";
+    public static final String HEADER_ID = "ЕГН";
+    public static final String HEADER_VACATION_PERIOD = "Начална дата - крайна дата";
+    public static final String HEADER_VACATION_TYPE = "Тип отпуска";
+
     public static void main(String[] args) {
         printUserOptions();
     }
@@ -127,33 +134,27 @@ public class VacationsSystem {
     }
 
     public static void printVacationsTableHeader() {
-        String firstName = "Име";
-        String lastName = "Фамилия";
-        String email = "Имейл";
-        String id = "ЕГН";
-        String vacationPeriod = "Начална дата - крайна дата";
-        String vacationType = "Тип отпуска";
-        System.out.print(firstName);
-        for (int j = 0; j < FIRST_NAME_WIDTH - firstName.length(); j++) {
+        System.out.print(HEADER_FIRST_NAME);
+        for (int j = 0; j < FIRST_NAME_WIDTH - HEADER_FIRST_NAME.length(); j++) {
             System.out.print(" ");
         }
-        System.out.print(lastName);
-        for (int j = 0; j < LAST_NAME_WIDTH - lastName.length(); j++) {
+        System.out.print(HEADER_LAST_NAME);
+        for (int j = 0; j < LAST_NAME_WIDTH - HEADER_LAST_NAME.length(); j++) {
             System.out.print(" ");
         }
-        System.out.print(email);
-        for (int j = 0; j < EMAIL_WIDTH - email.length(); j++) {
+        System.out.print(HEADER_EMAIL);
+        for (int j = 0; j < EMAIL_WIDTH - HEADER_EMAIL.length(); j++) {
             System.out.print(" ");
         }
-        System.out.print(id);
-        for (int j = 0; j < ID_WIDTH - id.length(); j++) {
+        System.out.print(HEADER_ID);
+        for (int j = 0; j < ID_WIDTH - HEADER_ID.length(); j++) {
             System.out.print(" ");
         }
-        System.out.print(vacationPeriod);
-        for (int j = 0; j < VACATION_PERIOD_WIDTH - vacationPeriod.length(); j++) {
+        System.out.print(HEADER_VACATION_PERIOD);
+        for (int j = 0; j < VACATION_PERIOD_WIDTH - HEADER_VACATION_PERIOD.length(); j++) {
             System.out.print(" ");
         }
-        System.out.println(vacationType);
+        System.out.println(HEADER_VACATION_TYPE);
         for (int j = 0; j < VACATION_TYPE_WIDTH; j++) {
             System.out.print("-");
         }
@@ -294,6 +295,13 @@ public class VacationsSystem {
     }
 
     public static String returnVacationPeriod() {
+        String startDate = returnStartDate();
+        String endDate = returnEndDate();
+        String vacationPeriod = startDate.concat(" - ").concat(endDate);
+        return vacationPeriod;
+    }
+
+    public static String returnStartDate() {
         Scanner input = new Scanner(System.in);
         System.out.println("Моля въведете начална дата в формат DD/MM/2019");
         String startDate = input.nextLine();
@@ -307,6 +315,11 @@ public class VacationsSystem {
                 startDate = input.nextLine();
             }
         }
+        return startDate;
+    }
+
+    public static String returnEndDate() {
+        Scanner input = new Scanner(System.in);
         System.out.println("Моля въведете крайна дата в формат DD/MM/2019");
         String endDate = input.nextLine();
         if (endDate == null || endDate.isEmpty()) {
@@ -315,12 +328,12 @@ public class VacationsSystem {
         } else {
             String dateRegex = "[0-9]{2}/[0-9]{2}/(2019)";
             while (!endDate.matches(dateRegex) || !validateDate(endDate)) {
+                //!startDate.matches(dateRegex) &&
                 System.out.println("Моля въведете валидна крайна дата в указаният формат!");
                 endDate = input.nextLine();
             }
         }
-        String vacationPeriod = startDate.concat(" - ").concat(endDate);
-        return vacationPeriod;
+        return endDate;
     }
 
     public static String returnVacationType() {
