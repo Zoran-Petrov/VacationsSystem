@@ -218,7 +218,6 @@ public class VacationsSystem {
             System.out.print(" ");
         }
         System.out.println(row[5]);
-
     }
 
     public static void changeVacationStatus() {
@@ -319,10 +318,8 @@ public class VacationsSystem {
                 System.out.println("Моля въведете валидна крайна дата в указаният формат!");
                 endDate = input.nextLine();
             }
-
         }
         String vacationPeriod = startDate.concat(" - ").concat(endDate);
-
         return vacationPeriod;
     }
 
